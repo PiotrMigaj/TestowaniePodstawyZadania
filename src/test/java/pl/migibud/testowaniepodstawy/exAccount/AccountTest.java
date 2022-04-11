@@ -27,4 +27,34 @@ class AccountTest {
     @Test
     void getBalance() {
     }
+
+    @Test
+    void shouldAccountBalanceIncreaseAfterDeposit() {
+
+        //given
+        int amount = 50;
+
+        //when
+        int balanceBeforeNextDeposit=account.getBalance();
+        account.deposit(amount);
+        int balanceAfterNextDeposit=account.getBalance();
+
+        //then
+        assertEquals(balanceAfterNextDeposit-balanceBeforeNextDeposit,amount);
+    }
+
+    @Test
+    void shouldAccountBalanceBeTheSameAfterDepositIfAmountNotGreaterThanZero() {
+
+        //given
+        int amount = 1500;
+
+        //when
+        int balanceBeforeNextDeposit=account.getBalance();
+        account.deposit(amount);
+        int balanceAfterNextDeposit=account.getBalance();
+
+        //then
+        assertEquals(balanceAfterNextDeposit,balanceBeforeNextDeposit);
+    }
 }
