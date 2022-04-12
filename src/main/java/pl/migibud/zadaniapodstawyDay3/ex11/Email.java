@@ -2,59 +2,10 @@ package pl.migibud.zadaniapodstawyDay3.ex11;
 
 public class Email {
 
-    private final String receiver;
-    private final String title;
-    private final String bodyMsg;
-    private final String attachment;
-
-    public Email(Builder b){
-        this.receiver = b.receiver;
-        this.title = b.title;
-        this.bodyMsg=b.bodyMsg;
-        this.attachment = b.attachment;
-    }
-
-    static class Builder {
-
-        private String receiver;
-        private String title;
-        private String bodyMsg;
-        private String attachment;
-
-        public Builder receiver(String receiver) {
-            this.receiver = receiver;
-            return this;
-        }
-
-        public Builder title(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public Builder bodyMsg(String bodyMsg) {
-            this.bodyMsg = bodyMsg;
-            return this;
-        }
-
-        public Builder attachment(String attachment) {
-            this.attachment = attachment;
-            return this;
-        }
-
-        public Email build(){
-            return new Email(this);
-        }
-
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "receiver='" + receiver + '\'' +
-                    ", title='" + title + '\'' +
-                    ", bodyMsg='" + bodyMsg + '\'' +
-                    ", attachment='" + attachment + '\'' +
-                    '}';
-        }
-    }
+    private String receiver;
+    private String title;
+    private String bodyMsg;
+    private String attachment;
 
     @Override
     public String toString() {
@@ -65,4 +16,44 @@ public class Email {
                 ", attachment='" + attachment + '\'' +
                 '}';
     }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    private Email(){}
+
+    static class Builder{
+
+        private Email email;
+
+        public Builder(){
+            email = new Email();
+        }
+
+        Builder receiver(String receiver){
+            this.email.receiver= receiver;
+            return this;
+        }
+
+        Builder title(String title){
+            this.email.title = title;
+            return this;
+        }
+
+        Builder bodyMsg(String bodyMsg){
+            this.email.bodyMsg=bodyMsg;
+            return this;
+        }
+
+        Builder attachment(String attachment){
+            this.email.attachment=attachment;
+            return this;
+        }
+
+        Email build(){
+            return this.email;
+        }
+    }
+
 }

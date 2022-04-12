@@ -1,9 +1,13 @@
 package pl.migibud.zadaniapodstawyDay3.ex12;
 
 public class Computer {
-    private final Processor processor;
-    private final Memory memory;
-    private final ExternalPort externalPort;
+
+    private Processor processor;
+    private Memory memory;
+    private ExternalPort externalPort;
+
+    public Computer() {
+    }
 
     public Computer(Processor processor, Memory memory, ExternalPort externalPort) {
         this.processor = processor;
@@ -20,9 +24,10 @@ public class Computer {
                 '}';
     }
 
-    public static class Processor {
-        private final int cores;
-        private final String producer;
+    static class Processor {
+
+        private int cores;
+        private String producer;
 
         public Processor(int cores, String producer) {
             this.cores = cores;
@@ -38,10 +43,11 @@ public class Computer {
         }
     }
 
-    public static class Memory {
-        private final int memory;
-        private final String producer;
-        private final String type;
+    static class Memory {
+
+        private int memory;
+        private String producer;
+        private String type;
 
         public Memory(int memory, String producer, String type) {
             this.memory = memory;
@@ -59,8 +65,9 @@ public class Computer {
         }
     }
 
-    public static class ExternalPort {
-        private final String type;
+    static class ExternalPort {
+
+        private String type;
 
         public ExternalPort(String type) {
             this.type = type;
@@ -73,4 +80,5 @@ public class Computer {
                     '}';
         }
     }
+
 }
