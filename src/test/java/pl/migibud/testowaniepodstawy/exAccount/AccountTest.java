@@ -57,4 +57,14 @@ class AccountTest {
         //then
         assertEquals(balanceAfterNextDeposit,balanceBeforeNextDeposit);
     }
+
+    @Test
+    void exeptionShouldBeThrownIfWithrawExceedMaxDebit() {
+
+        //given
+        Account account = new Account();
+        //when
+        //then
+        assertThrows(Account.IllegalWithdrawExeption.class,()->account.withdraw(1001));
+    }
 }
