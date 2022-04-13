@@ -3,6 +3,8 @@ package pl.migibud.testowanieZadaniaSDA.ex1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -16,7 +18,8 @@ class CalculatorTest {
         //when
         int result = a + b;
         //then
-        assertEquals(result, Calculator.add(a, b));
+        //assertEquals(result, Calculator.add(a, b));
+        assertThat(Calculator.add(a, b)).isEqualTo(result);
     }
 
     @Test
@@ -24,7 +27,8 @@ class CalculatorTest {
         //when
         int result = a - b;
         //then
-        assertEquals(result,Calculator.subtract(a,b));
+        //assertEquals(result,Calculator.subtract(a,b));
+        assertThat(Calculator.subtract(a,b)).isEqualTo(result);
     }
 
     @Test
@@ -32,7 +36,8 @@ class CalculatorTest {
         //when
         int result = a * b;
         //then
-        assertEquals(result,Calculator.multiply(a,b));
+        //assertEquals(result,Calculator.multiply(a,b));
+        assertThat(Calculator.multiply(a,b)).isEqualTo(result);
     }
 
     @Test
@@ -41,7 +46,8 @@ class CalculatorTest {
         int divider = 0;
 
         //then
-        assertThrows(ArithmeticException.class,()->Calculator.divide(a,divider));
+        //assertThrows(ArithmeticException.class,()->Calculator.divide(a,divider));
+        assertThatThrownBy(()->Calculator.divide(a,divider)).isInstanceOf(ArithmeticException.class);
     }
 
     @Test
@@ -51,6 +57,7 @@ class CalculatorTest {
 
         //then
         assertEquals(result,Calculator.divide(a,b));
+        assertThat(Calculator.divide(a,b)).isEqualTo(result);
     }
 
 
