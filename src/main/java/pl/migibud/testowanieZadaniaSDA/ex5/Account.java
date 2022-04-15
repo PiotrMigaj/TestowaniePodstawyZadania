@@ -2,25 +2,49 @@ package pl.migibud.testowanieZadaniaSDA.ex5;
 
 import pl.migibud.workexamples.funcinter.workerexample.Worker;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Account {
 
     private int balance;
     private String accountNumber;
     private Owner owner;
+    private boolean debit;
 
-    public Account(int balance) {
-        this.balance = balance;
-    }
-
-    private static class Owner{
-
-        private String firstName;
-        private String lastName;
-
-        public Owner(String firstName, String lastName) {
-            this.firstName = firstName;
-            this.lastName = lastName;
+    public void setAccountNumber(String accountNumber) {
+        if (this.isAccountNumberCorrect(accountNumber)) {
+            this.accountNumber = accountNumber;
+        } else {
+            System.out.println("Wrong account number.");
         }
     }
 
+    public String getAccountNumber() {
+        return this.accountNumber;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public boolean isAccountNumberCorrect(String accountNumber) {
+
+        Pattern patter = Pattern.compile("PL[\\d]{24}");
+        return patter.matcher(accountNumber).matches();
+    }
+
+    public boolean deposit(int amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            isDebit();
+            return true;
+        }
+        System.out.println("Amount must be greater than 0.");
+        return false;
+    }
+
+    public void isDebit() {
+        this.debit = this.balance < 0 ? true : false;
+    }
 }
