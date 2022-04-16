@@ -110,7 +110,7 @@ class AccountTest {
         int amount = 0;
         account.deposit(amount);
 
-        MyFunction f = account::deposit;
+        MyFunction f = (int a)-> account.deposit(a);
 
         //then
         assertEquals(amount,f.myFunction(amount));
