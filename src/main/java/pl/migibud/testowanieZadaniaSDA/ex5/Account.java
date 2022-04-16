@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 public class Account {
 
+    private static final int MAX_DEBIT = -1000;
+
     private int balance;
     private String accountNumber;
     private Owner owner;
@@ -28,6 +30,10 @@ public class Account {
         return balance;
     }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
     public boolean isAccountNumberCorrect(String accountNumber) {
 
         Pattern patter = Pattern.compile("PL[\\d]{24}");
@@ -44,7 +50,32 @@ public class Account {
         return false;
     }
 
+    public boolean withdrawal(int amount){
+
+        if (amount>0){
+            if(ifAccountBalanceAfterWithdrawalExceedsMaxDebit(amount)){
+                System.out.println("Max debit exceeded.");
+                return false;
+            }else {
+                this.balance -= amount;
+                this.isDebit();
+                return true;
+            }
+        }
+        System.out.println("Amount must be greater than 0.");
+        return false;
+    }
+
+    private boolean ifAccountBalanceAfterWithdrawalExceedsMaxDebit(int amount){
+
+        if (this.balance-amount< MAX_DEBIT){
+            return true;
+        }
+        return false;
+    }
+
     public void isDebit() {
         this.debit = this.balance < 0 ? true : false;
     }
+
 }

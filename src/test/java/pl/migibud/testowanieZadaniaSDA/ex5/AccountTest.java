@@ -77,6 +77,8 @@ class AccountTest {
         int amount = 150;
 
         //when
+
+        //BankingOperationsUtil.deposit(account,amount);
         account.deposit(amount);
 
         //then
@@ -93,6 +95,7 @@ class AccountTest {
         //when
         int amount = -150;
         account.deposit(amount);
+        //BankingOperationsUtil.deposit(account,amount);
 
         //then
         assertEquals(0,account.getBalance());
@@ -113,6 +116,98 @@ class AccountTest {
         MyFunction f = (int a)-> account.deposit(a);
 
         //then
-        assertEquals(amount,f.myFunction(amount));
+        assertFalse(f.myFunction(amount));
+    }
+
+    @Test
+    void shouldWithdrawalNotPassIfAmountLowerThan0(){
+
+        //given
+        Account account= new Account();
+
+        //when
+        int amount = -150;
+
+        //then
+        assertFalse(account.withdrawal(amount));
+    }
+
+    @Test
+    void shouldWithdrawalNotPassIfAmountEquals0(){
+
+        //given
+        Account account= new Account();
+
+        //when
+        int amount = 0;
+
+        //then
+        assertFalse(account.withdrawal(amount));
+    }
+
+    @Test
+    void shouldWithdrawalNotPassIfDebitExceeded(){
+
+        //given
+        Account account= new Account();
+
+        //when
+        account.deposit(500);
+        int amount = 2000;
+
+        //then
+        assertFalse(account.withdrawal(amount));
+    }
+
+    @Test
+    void shouldWithdrawalPass(){
+
+        //given
+        Account account= new Account();
+
+        //when
+        account.deposit(500);
+        int amount = 250;
+
+        //then
+        assertTrue(account.withdrawal(amount));
+        assertEquals(500-250,account.getBalance());
+    }
+
+    @Test
+    void shouldTransferNotPass(){
+
+        //given
+        Account sender = new Account();
+        Account receiver = new Account();
+        int amount = 1050;
+
+        //then
+        assertThrows(NegativeSenderBalance.class,()->BankingOperationsUtil.bankTranfer(sender,receiver,amount));
+    }
+
+    @Test
+    void shouldTransferPass(){
+
+        //given
+        Account sender = new Account();
+        Account receiver = new Account();
+        int amount = 60;
+
+        //when
+
+        try{
+            BankingOperationsUtil.bankTranfer(sender,receiver,60);
+        }catch (NegativeSenderBalance e){
+
+        }
+
+        //then
+
+        assertAll(
+                ()->assertEquals(-60,sender.getBalance()),
+                ()->assertEquals(60,receiver.getBalance())
+        );
+
     }
 }
