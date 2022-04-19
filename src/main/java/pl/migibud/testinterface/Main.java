@@ -2,6 +2,7 @@ package pl.migibud.testinterface;
 
 public class Main {
 
+<<<<<<< HEAD
 
     public static void main(String[] args) {
 
@@ -10,4 +11,15 @@ public class Main {
 
 
     }
+=======
+    public static void main(String[] args) {
+
+        Class2 class2 = new Class2();
+        class2.setA(new Class1());
+
+        System.out.println(class2.getA());
+
+    }
+
+>>>>>>> origin/main
 }
