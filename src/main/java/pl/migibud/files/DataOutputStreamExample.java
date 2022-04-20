@@ -18,6 +18,9 @@ public class DataOutputStreamExample {
             out.writeLong(1234564213L);
             out.writeFloat(23.56f);
             out.writeDouble(123456.4564d);
+            out.writeByte(12);
+            out.writeChar('A');
+            out.flush();
 
 
 
