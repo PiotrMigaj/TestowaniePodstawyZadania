@@ -1,5 +1,7 @@
 package pl.migibud.inheritance.ex1;
 
+import java.util.Objects;
+
 public class Point2D {
 
     protected float x,y;
@@ -44,4 +46,18 @@ public class Point2D {
 
         return String.format("(%f,%f)",this.x,this.y);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point2D point2D = (Point2D) o;
+        return Float.compare(point2D.x, x) == 0 && Float.compare(point2D.y, y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
 }
