@@ -34,12 +34,12 @@ public class Rectangle extends Shape {
         this.length = length;
     }
 
-    public double getArea(){
-        return this.width*this.length;
+    public float getArea(){
+        return (float)(this.width*this.length);
     }
 
-    public double getPerimeter(){
-        return 2*(this.width+this.length);
+    public float getPerimeter(){
+        return 2*(float)(this.width+this.length);
     }
 
     @Override

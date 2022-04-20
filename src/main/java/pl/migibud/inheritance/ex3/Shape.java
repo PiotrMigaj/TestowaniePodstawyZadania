@@ -1,9 +1,9 @@
 package pl.migibud.inheritance.ex3;
 
-public class Shape {
+public abstract class Shape {
 
-    String color;
-    boolean isFilled;
+    protected String color;
+    protected boolean isFilled;
 
     public Shape() {
         this.color = "";
@@ -29,6 +29,10 @@ public class Shape {
     public void setFilled(boolean filled) {
         isFilled = filled;
     }
+
+    public abstract float getArea();
+
+    public abstract float getPerimeter();
 
     @Override
     public String toString() {

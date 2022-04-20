@@ -22,4 +22,5 @@ public class Square extends Rectangle{
     public String toString() {
         return String.format("Square with width=%f and length=%f which is a subclass off %s",this.width,this.length,super.toString());
     }
+
 }
