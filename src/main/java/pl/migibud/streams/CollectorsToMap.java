@@ -26,11 +26,11 @@ public class CollectorsToMap {
         Map<String,Car> carsMap = cars.stream().collect(Collectors.toMap(car->car.name,car->car));
         TreeMap<String,Car> treeMapCars = new TreeMap<>(carsMap);
 
-        Comparator<String> comparator = (String s1, String s2)->Integer.compare(s1.length(),s2.length());
 
-        TreeMap<String,Car> treeMapCars2 = new TreeMap<>(comparator);
+        TreeMap<String,Car> treeMapCars2 = new TreeMap<>(Comparator.comparingInt(String::length));
         treeMapCars2.putAll(treeMapCars);
 
+        System.out.println(treeMapCars2);
 
 
 //        carsMy.put("Dodge",new Car("Dodge",250,300_000,4));
@@ -38,7 +38,6 @@ public class CollectorsToMap {
 //        carsMy.put("GMC",new Car("GMC",170,100_000,3));
 
 
-        System.out.println(treeMapCars);
 
 //        Iterator i = carsMy.entrySet().iterator();
 //
