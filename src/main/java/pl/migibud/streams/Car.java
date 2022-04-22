@@ -1,9 +1,11 @@
 package pl.migibud.streams;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Car implements Comparator<Car> {
+public class Car {
 
     public String name;
     public int topSpeed;
@@ -27,10 +29,10 @@ public class Car implements Comparator<Car> {
                 '}';
     }
 
-    @Override
-    public int compare(Car o1, Car o2) {
-        return o2.name.compareTo(o1.name);
-    }
+//    @Override
+//    public int compare(Car o1, Car o2) {
+//        return o1.name.length()-o2.name.length();
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,4 +48,8 @@ public class Car implements Comparator<Car> {
     }
 
 
+//    @Override
+//    public int compareTo(@NotNull Car o) {
+//        return (int)(this.name.length()-o.name.length());
+//    }
 }
