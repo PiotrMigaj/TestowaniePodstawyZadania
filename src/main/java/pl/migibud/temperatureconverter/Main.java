@@ -6,7 +6,7 @@ public class Main {
 
         //TemperatureConverter temperatureConverter = new TemperatureConverter();
 
-        float convertedTemp = TemperatureConverter.temperatureConverter('C','K',34f);
+        float convertedTemp = TemperatureConverter.temperatureConverter('C','F',34f);
         System.out.println(convertedTemp);
 
     }
