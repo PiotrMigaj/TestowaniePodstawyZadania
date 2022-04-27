@@ -5,6 +5,7 @@ import pl.migibud.javazaawansowanazadania.students.studentsdatacontainer.Address
 import pl.migibud.javazaawansowanazadania.students.studentsdatacontainer.PersonalStudentData;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 public class Student {
@@ -23,6 +24,10 @@ public class Student {
         return numberOfPoints;
     }
 
+    public void reduceNumberOfPoints(int numberOfPointsToReduce){
+        this.numberOfPoints-=numberOfPointsToReduce;
+    }
+
     public UUID getStudentId(){
         return this.personalStudentData.getId();
     }
@@ -33,6 +38,10 @@ public class Student {
 
     public LocalDate getYearOfBirthOfStudent(){
         return this.personalStudentData.getDateOfBirth();
+    }
+
+    public int getStudentAge(){
+        return (int)ChronoUnit.YEARS.between(this.getYearOfBirthOfStudent(),LocalDate.now());
     }
 
     @Override

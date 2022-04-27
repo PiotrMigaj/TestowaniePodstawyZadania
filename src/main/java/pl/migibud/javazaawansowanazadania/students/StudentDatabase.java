@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class StudentDatabase implements StudentDatabaseProvider{
@@ -71,6 +72,13 @@ public class StudentDatabase implements StudentDatabaseProvider{
 
     @Override
     public void punishStudents(int age, String city) {
+        //studentList.stream().filter(student -> student.getStudentAge()==age).filter(student -> student.getStudentCity().equals(city)).iterator().next().reduceNumberOfPoints(10);
+        //studentIterator = studentList.iterator();
+        for (int i =0;i<studentList.size();i++){
+            if (studentList.get(i).getStudentAge()<30){
+                studentList.remove(i);
+            }
 
+        }
     }
 }

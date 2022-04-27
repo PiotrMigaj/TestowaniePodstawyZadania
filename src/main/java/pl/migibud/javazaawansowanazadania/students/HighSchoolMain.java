@@ -2,6 +2,7 @@ package pl.migibud.javazaawansowanazadania.students;
 
 import pl.migibud.javazaawansowanazadania.students.exceptions.StudentHasLessThan25PointsException;
 import pl.migibud.javazaawansowanazadania.students.numberofpoints.HardcodedNumberOfPoints;
+import pl.migibud.javazaawansowanazadania.students.numberofpoints.NumberOfPointsProvider;
 import pl.migibud.javazaawansowanazadania.students.numberofpoints.RandomNumberOfPoints;
 import pl.migibud.javazaawansowanazadania.students.numberofpoints.ScannerNumberOfPoints;
 import pl.migibud.javazaawansowanazadania.students.studentsdatacontainer.Address;
@@ -39,23 +40,32 @@ public class HighSchoolMain {
                         "5fc03087-d265-11e7-b8c6-83e29cd24f4c"),new Address("Psary","Długa","16"));
         //System.out.println(studentDatabase.studentList);
 
-        Student student2 = new Student(new PersonalStudentData("Jola Migaj",LocalDate.of(1972,7,24)),
+        Student student2 = new Student(new PersonalStudentData("Jola Migaj",LocalDate.of(1994,7,24)),
                 new Address("Wroclaw","Ig Chrz","41/2"),
                 new HardcodedNumberOfPoints());
-        Student student3 = new Student(new PersonalStudentData("Anna Migaj",LocalDate.of(1994,7,24)),
-                new Address("Wroclaw","Ig Chrz","41/2"),
-                new HardcodedNumberOfPoints());
+        Student student3 = new Student(new PersonalStudentData("Anna Migaj", LocalDate.of(1994, 7, 24)),
+                new Address("Wroclaw", "Ig Chrz", "41/2"),
+                new NumberOfPointsProvider() {
+                    @Override
+                    public int getNumberOfPoints() {
+                        return 35;
+                    }
+                });
 
         studentDatabase.addStudent(student2);
         studentDatabase.addStudent(student3);
 
-        System.out.println(studentDatabase.studentList);
-        System.out.println(studentDatabase.getStudentsFromCity("Wroclaw"));
+        //System.out.println(studentDatabase.studentList);
+        //System.out.println(studentDatabase.getStudentsFromCity("Wroclaw"));
 
-        System.out.println(studentDatabase.getStudentsOrderedByAge());
+        //System.out.println(studentDatabase.getStudentsOrderedByAge());
 
 //        System.out.println(new ScannerNumberOfPoints().getNumberOfPoints());
 
+        System.out.println(studentDatabase.studentList);
 
+        studentDatabase.punishStudents(27,"Wroclaw");
+
+        System.out.println(studentDatabase.studentList);
     }
 }
