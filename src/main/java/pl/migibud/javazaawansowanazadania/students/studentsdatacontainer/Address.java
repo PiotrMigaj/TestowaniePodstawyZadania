@@ -12,6 +12,10 @@ public class Address {
         this.numberOfHouse = numberOfHouse;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     @Override
     public String toString() {
         return "Address{" +

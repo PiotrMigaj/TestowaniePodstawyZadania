@@ -4,10 +4,13 @@ import pl.migibud.javazaawansowanazadania.students.numberofpoints.NumberOfPoints
 import pl.migibud.javazaawansowanazadania.students.studentsdatacontainer.Address;
 import pl.migibud.javazaawansowanazadania.students.studentsdatacontainer.PersonalStudentData;
 
+import java.time.LocalDate;
+import java.util.UUID;
+
 public class Student {
 
     private PersonalStudentData personalStudentData;
-    private Address address;
+    Address address;
     private int numberOfPoints;
 
     public Student(PersonalStudentData personalStudentData, Address address, NumberOfPointsProvider numberOfPointsProvider) {
@@ -18,6 +21,18 @@ public class Student {
 
     public int getNumberOfPoints() {
         return numberOfPoints;
+    }
+
+    public UUID getStudentId(){
+        return this.personalStudentData.getId();
+    }
+
+    public String getStudentCity(){
+        return this.address.getCity();
+    }
+
+    public LocalDate getYearOfBirthOfStudent(){
+        return this.personalStudentData.getDateOfBirth();
     }
 
     @Override

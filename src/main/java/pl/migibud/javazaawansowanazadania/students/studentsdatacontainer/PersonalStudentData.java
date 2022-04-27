@@ -10,7 +10,11 @@ public class PersonalStudentData {
     private LocalDate dateOfBirth;
 
     public PersonalStudentData(String fullName, LocalDate dateOfBirth) {
-        this.id = UUID.randomUUID();
+        //this.id = UUID.randomUUID();
+        this.id = UUID
+                .fromString(
+                        "5fc03087-d265-11e7-b8c6-83e29cd24f4c");
+
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
     }
