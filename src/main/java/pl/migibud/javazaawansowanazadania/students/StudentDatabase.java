@@ -62,9 +62,11 @@ public class StudentDatabase implements StudentDatabaseProvider{
 
     @Override
     public List<Student> getStudentsOrderedByAge() {
-        List<Student> sortedStudentList = new ArrayList<>(this.studentList);
-        sortedStudentList.sort(new StudentsByAgeComparator());
-        return sortedStudentList;
+//        List<Student> sortedStudentList = new ArrayList<>(this.studentList);
+//        sortedStudentList.sort(new StudentsByAgeComparator());
+//        return sortedStudentList;
+
+        return studentList.stream().sorted(new StudentsByAgeComparator()).collect(Collectors.toList());
     }
 
     @Override
