@@ -2,6 +2,7 @@ package pl.migibud.bankaccount;
 
 import pl.migibud.bankaccount.exceptions.AmountLessEqualZeroException;
 import pl.migibud.bankaccount.exceptions.MaxDebitExceededException;
+import pl.migibud.bankaccount.interfaces.BankAccountFunctionality;
 
 public class Transfer{
 
@@ -20,7 +21,7 @@ public class Transfer{
 //        }
 //    }
 
-        public static<T extends StandardAccount,Y extends  StandardAccount> void transferMoney(T firstAccount, Y secondAccount, int amount) {
+        public static<T extends BankAccountFunctionality,Y extends  BankAccountFunctionality> void transferMoney(T firstAccount, Y secondAccount, int amount) {
 
         try {
             firstAccount.withdrawal(amount);
