@@ -6,26 +6,27 @@ import pl.migibud.bankaccount.interfaces.BankAccountFunctionality;
 
 public class PremiumAccount implements BankAccountFunctionality {
 
-    private StandardAccount standardAccount;
+    private BankAccountFunctionality bankAccountFunctionality;
 
-    public PremiumAccount(String number) throws AmountLessEqualZeroException {
-        this.standardAccount = new StandardAccount(number);
-        this.standardAccount.deposit(100);
+    public PremiumAccount(BankAccountFunctionality bankAccountFunctionality) throws AmountLessEqualZeroException {
+        this.bankAccountFunctionality = bankAccountFunctionality;
+        this.bankAccountFunctionality.deposit(100);
     }
 
     public int getBalance(){
-        return this.standardAccount.getBalance();
+        return this.bankAccountFunctionality.getBalance();
     }
+
 
     @Override
     public void deposit(int amount) throws AmountLessEqualZeroException {
         int premiumAmount = amount*2;
-        this.standardAccount.deposit(premiumAmount);
+        this.bankAccountFunctionality.deposit(premiumAmount);
     }
 
     @Override
     public void withdrawal(int amount) throws AmountLessEqualZeroException, MaxDebitExceededException {
-        this.standardAccount.withdrawal(amount);
+        this.bankAccountFunctionality.withdrawal(amount);
     }
 
     //    @Override

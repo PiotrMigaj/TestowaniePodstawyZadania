@@ -9,4 +9,6 @@ public interface BankAccountFunctionality {
 
     void withdrawal(int amount) throws AmountLessEqualZeroException, MaxDebitExceededException;
 
+    int getBalance();
+
 }

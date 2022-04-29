@@ -11,10 +11,11 @@ public class Main {
         StandardAccount standardAccount = new StandardAccount("1234123465411234456784");
         standardAccount.deposit(1000);
 
-        ExtraStartAccount extraStartAccount = new ExtraStartAccount("12315464");
+        ExtraStartAccount extraStartAccount = new ExtraStartAccount(new StandardAccount("12313543321"));
+        extraStartAccount.deposit(150);
         //System.out.println(extraStartAccount.getBalance());
 
-        PremiumAccount premiumAccount = new PremiumAccount("126456164");
+        PremiumAccount premiumAccount = new PremiumAccount(new StandardAccount("123451312156412"));
         //System.out.println(premiumAccount.getBalance());
 
 //        premiumAccount.deposit(100);
