@@ -21,11 +21,11 @@ public class Transfer{
 //        }
 //    }
 
-        public static<T extends BankAccountFunctionality,Y extends  BankAccountFunctionality> void transferMoney(T firstAccount, Y secondAccount, int amount) {
+        public static void transferMoney(BankAccountFunctionality bankAccountFunctionality1, BankAccountFunctionality bankAccountFunctionality2, int amount) {
 
         try {
-            firstAccount.withdrawal(amount);
-            secondAccount.deposit(amount);
+            bankAccountFunctionality1.withdrawal(amount);
+            bankAccountFunctionality2.deposit(amount);
         }catch (AmountLessEqualZeroException e){
             System.out.println(e.getMessage());
         }catch (MaxDebitExceededException e){
