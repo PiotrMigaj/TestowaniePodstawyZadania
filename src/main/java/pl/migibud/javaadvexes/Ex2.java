@@ -34,14 +34,14 @@ public class Ex2 {
 //                .sum();
 
 
-        Optional<Integer> optionalInteger = Optional.of(Stream.generate(() -> new Fruit(random.nextInt(20)+20))
+        Integer optionalInteger = Stream.generate(() -> new Fruit(random.nextInt(20)+20))
                 .limit(2)
                 .map(a -> a.getWeight())
                 .peek(w -> System.out.println(w))
                 .mapToInt(i -> i)
-                .sum());
+                .sum();
 
-        System.out.println(optionalInteger.orElse(0));
+        System.out.println(optionalInteger);
 
     }
 
