@@ -57,5 +57,10 @@ public class SDAArrayList<T> {
         }
     }
 
+    //tak nie można
+    public T[] returnArray(){
+        return (T[]) this.tArray;
+    }
+
 
 }

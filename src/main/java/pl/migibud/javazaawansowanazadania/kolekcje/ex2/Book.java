@@ -1,9 +1,11 @@
 package pl.migibud.javazaawansowanazadania.kolekcje.ex2;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 import java.util.Objects;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private String title;
     private float price;
@@ -81,5 +83,10 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(title, price, yearOfRelease, authors, genre);
+    }
+
+    @Override
+    public int compareTo(@NotNull Book o) {
+        return (int)(this.price-o.price);
     }
 }

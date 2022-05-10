@@ -1,9 +1,12 @@
 package pl.migibud.javazaawansowanazadania.kolekcje.ex2;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import pl.migibud.javazaawansowanazadania.kolekcje.groupingby.Trade;
+
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class BookService {
 
@@ -91,4 +94,24 @@ public class BookService {
         return this.books.stream().filter(book -> book.getAuthors().contains(author)).collect(Collectors.toList());
     }
 
+//    public Map<Genre,String> getPairGenreAndTitle(){
+//        Map<Genre,String> tmpMap = new HashMap<>();
+//        for (Book b:this.books) {
+//            tmpMap.put(b.getGenre(),b.getTitle());
+//        }
+//        return tmpMap;
+//    }
+
+    public Map<Genre,List<String>> getPairGenreAndTitle(){
+
+        return this.books
+                .stream()
+                .collect(Collectors
+                        .groupingBy(Book::getGenre,
+                        Collectors.mapping(Book::getTitle,Collectors.toList())));
+    }
+
+    public PriorityQueue<Book> getPriorityQueueOfBooks(){
+        return new PriorityQueue<>(this.books);
+    }
 }

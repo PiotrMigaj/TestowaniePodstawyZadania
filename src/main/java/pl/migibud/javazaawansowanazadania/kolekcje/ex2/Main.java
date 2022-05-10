@@ -1,7 +1,6 @@
 package pl.migibud.javazaawansowanazadania.kolekcje.ex2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -21,7 +20,25 @@ public class Main {
 //        System.out.println(bookService.findByNumberOfAuthors(2));
 //        System.out.println(bookService.sortByTitleAscending());
 //        System.out.println(bookService.sortByTitleDescending());
-        System.out.println(bookService.findByAuthor(new Author("Piotr","Migaj","MALE")));
+        //System.out.println(bookService.findByAuthor(new Author("Piotr","Migaj","MALE")));
+
+//        System.out.println(bookService.getPairGenreAndTitle());
+
+//        Map<Genre,List<String>> tmpMap = new HashMap<>();
+//        tmpMap.put(Genre.FANTASY,new ArrayList<>());
+//        tmpMap.get(Genre.FANTASY).add("Harry Potter");
+//        tmpMap.get(Genre.FANTASY).add("Warry Potter");
+//
+//        System.out.println(tmpMap);
+
+        Queue<Book> myQueue = bookService.getPriorityQueueOfBooks();
+
+        System.out.println(myQueue.poll());
+        System.out.println(myQueue.poll());
+        System.out.println(myQueue.poll());
+        System.out.println(myQueue.poll());
+
+
 
     }
 

@@ -21,6 +21,9 @@ public class Main {
 
         sdaArrayList.display();
 
+//        Fruit[] fruits = sdaArrayList.returnArray();
+//        System.out.println(Arrays.toString(fruits));
+
     }
 
 }
