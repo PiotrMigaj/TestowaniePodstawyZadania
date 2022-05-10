@@ -15,17 +15,17 @@ public class Main {
 
 
         Runnable runnable1 = ()->{
-            for(int i=0;i<100;i++){
+            for(int i=0;i<10_000;i++){
                 bridge.driveThrough(car1);
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    Thread.sleep(10);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
         };
         Runnable runnable2 = ()->{
-            for(int i=0;i<100;i++){
+            for(int i=0;i<10_000;i++){
                 bridge.driveThrough(car2);
             }
         };
@@ -34,7 +34,7 @@ public class Main {
         executorService.submit(runnable1);
         executorService.submit(runnable2);
         executorService.shutdown();
-        executorService.awaitTermination(3, TimeUnit.SECONDS);
+        executorService.awaitTermination(20, TimeUnit.SECONDS);
 
         System.out.println(bridge.driveThrough);
         System.out.println("czesc");

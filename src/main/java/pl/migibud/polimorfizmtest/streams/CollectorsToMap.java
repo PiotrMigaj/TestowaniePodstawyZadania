@@ -1,7 +1,4 @@
-package pl.migibud.streams;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+package pl.migibud.polimorfizmtest.streams;
 
 import java.util.*;
 import java.util.stream.Collectors;

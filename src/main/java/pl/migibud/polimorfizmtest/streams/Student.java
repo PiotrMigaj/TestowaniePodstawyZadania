@@ -1,4 +1,4 @@
-package pl.migibud.streams;
+package pl.migibud.polimorfizmtest.streams;
 
 
 // Java Program to Demonstrate TreeMap
@@ -6,7 +6,6 @@ package pl.migibud.streams;
 
 // Importing required classes
 import java.util.*;
-import java.util.concurrent.*;
 
 // Class 1
 // Helper class representing Student

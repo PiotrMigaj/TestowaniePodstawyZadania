@@ -1,7 +1,6 @@
-package pl.migibud.streams;
+package pl.migibud.polimorfizmtest.streams;
 
 import java.util.ArrayList;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class SummingInt {

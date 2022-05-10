@@ -1,4 +1,4 @@
-package pl.migibud.streams;
+package pl.migibud.polimorfizmtest.streams;
 
 import java.util.ArrayList;
 
