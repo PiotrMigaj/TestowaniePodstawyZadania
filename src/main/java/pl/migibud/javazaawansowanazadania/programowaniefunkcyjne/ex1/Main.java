@@ -32,6 +32,33 @@ public class Main {
         List<String> seasonNames = seasons.stream().map(v->v.seasonName).collect(Collectors.toList());
         System.out.println(seasonNames);
 
+        List<Integer> seasonNumbers = seasons.stream().map(v->v.seasonNumber).collect(Collectors.toList());
+        System.out.println(seasonNumbers);
+
+        List<String> episodeNames = seasons.stream().flatMap(v->v.episodes.stream()).map(v->v.episodeName).collect(Collectors.toList());
+        System.out.println(episodeNames);
+
+        List<Integer> episodeNumbers = seasons.stream().flatMap(v->v.episodes.stream()).map(v->v.episodeNumber).collect(Collectors.toList());
+        System.out.println(episodeNumbers);
+
+        List<String> videoNames = seasons.stream().flatMap(v->v.episodes.stream()).flatMap(v->v.videos.stream()).map(v->v.title).collect(Collectors.toList());
+        System.out.println(videoNames);
+
+        List<String> videoUrls = seasons.stream().flatMap(v->v.episodes.stream()).flatMap(v->v.videos.stream()).map(v->v.url).collect(Collectors.toList());
+        System.out.println(videoUrls);
+
+        seasons.stream().filter(v->v.seasonNumber%2==0).flatMap(v->v.episodes.stream()).forEach(v-> System.out.println(v.episodeName));
+
+        seasons.stream().filter(v->v.seasonNumber%2==0).flatMap(v->v.episodes.stream()).flatMap(v->v.videos.stream()).forEach(v-> System.out.println(v.title));
+
+        seasons.stream().filter(v->v.seasonNumber%2==0).flatMap(v->v.episodes.stream()).flatMap(v->v.videos.stream()).forEach(v-> System.out.println(v.title));
+
+        System.out.println("******");
+
+        seasons.stream().filter(v->v.seasonNumber%2!=0).flatMap(v->v.episodes.stream()).filter(v->v.episodeNumber%2==0).flatMap(v->v.videos.stream()).forEach(v-> System.out.println(v.title));
+
+        seasons.stream().filter(v->v.seasonNumber%2!=0).flatMap(v->v.episodes.stream()).filter(v->v.episodeNumber%2!=0).flatMap(v->v.videos.stream()).filter(v->v.videoType==VideoType.CLIP).forEach(System.out::println);
+
 
 
 
