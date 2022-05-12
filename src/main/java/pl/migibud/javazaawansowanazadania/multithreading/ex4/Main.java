@@ -7,11 +7,14 @@ public class Main {
         Account account = new Account(10000);
 
         Thread thread1 = new Thread(()->{
-           try{
-               account.withdrawal(20000);
-           }catch (InterruptedException e){
-               e.printStackTrace();
+           while(!Thread.interrupted()){
+               try{
+                   account.withdrawal(20000);
+               }catch (InterruptedException e){
+                   e.printStackTrace();
+               }
            }
+
         });
 
         Thread thread2 = new Thread(()->{
@@ -29,16 +32,19 @@ public class Main {
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
-            account.deposit(6000);
+            account.deposit(3000);
         });
 
         thread1.start();
         thread2.start();
         thread3.start();
 
-        thread1.join();
+        //thread1.join(5000);
         thread2.join();
         thread3.join();
+        thread1.interrupt();
+
+
 
         System.out.println("Cześć !");
     }
